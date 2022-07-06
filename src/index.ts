@@ -5,6 +5,7 @@ import { ApolloServer } from 'apollo-server';
 import { UserResolver } from "./resolvers/UserResolver";
 import { AppDataSource } from "./data-source";
 import { schema } from './schema';
+import { PORT } from './config';
 
 async function main() {
   AppDataSource.initialize()
@@ -23,7 +24,7 @@ async function main() {
     schema
   })
 
-  const { url } = await server.listen();
+  const { url } = await server.listen(PORT);
 
   console.log(`Server running on ${url}`);
 }
